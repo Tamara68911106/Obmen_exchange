@@ -3,7 +3,7 @@ import json
 from tkinter import*
 from tkinter import messagebox as mb
 
-def exchenge():
+def exchange():
     code = entry.get()
 
     if code:
@@ -13,9 +13,9 @@ def exchenge():
             data = response.json() # раскладываем в виде питонского словаря
             if code in data['rates']:# проверяем существует ли данная валюта
                 exchange_rate = data['rates'][code]
-                mb.showinfo("Курс обмена", f"Курс: {exchange-rate}{code}"f" за 1 доллар")
+                mb.showinfo("Курс обмена", f"Курс: {exchange_rate:.2f}{code}"f" за 1 доллар")
             else:
-                mb.showerroк('Ошибка!', f"Валюта {code} не найдена")# обработка исключений
+                mb.showerror('Ошибка!', f"Валюта {code} не найдена")# обработка исключений
         except Exception as e:
             mb.showerror("Ошибка", f"Произошла ошибка: {e}.")
     else:
