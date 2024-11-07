@@ -2,9 +2,11 @@ import requests
 import json
 from tkinter import*
 from tkinter import messagebox as mb
+from tkinter import ttk
+
 
 def exchange():
-    code = entry.get()
+    code = combobox.get()
 
     if code:
         try:
@@ -25,11 +27,14 @@ window=Tk()
 window.title('КУрсы обмена валюты')
 window.geometry("360x180")
 
-Label(text="Введите код валюты").pack(padx=10, pady=10)
 
+Label(text="Выберите код валюты").pack(padx=10, pady=10)
+cur=['RUB', 'EUR', 'GBR', 'JPY', 'CNY', 'KZT', 'UZS', 'AED', 'CAD']
+combobox = ttk.Combobox(values=cur)
+combobox.pack(padx=10, pady=10)
 
-entry=Entry()
-entry.pack(padx=10, pady=10)
+# entry=Entry  выключаем поле ввода
+# entry.pack(padx=10, pady=10)
 
 Button(text="Получить курс обмена к доллару", command=exchange).pack(padx=10, pady=10)
 
